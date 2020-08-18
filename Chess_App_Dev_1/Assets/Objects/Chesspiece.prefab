@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5935789770131646783}
   - component: {fileID: 5935789770131646784}
+  - component: {fileID: 4764706952649260030}
+  - component: {fileID: -1750071788975134510}
   m_Layer: 0
   m_Name: Chesspiece
   m_TagString: Untagged
@@ -82,3 +84,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4764706952649260030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935789770131646785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4afd31a5faa5a84ebd9589e956e5b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  movePlate: {fileID: 4341658055440824194, guid: 394844e6f9b0a06478cfe4b2847dd70e, type: 3}
+  black_queen: {fileID: 21300000, guid: f609936ba05ed6e46b31696de17edc98, type: 3}
+  black_knight: {fileID: 21300000, guid: e6ba037fa723de54db80c36dba1ce7c0, type: 3}
+  black_bishop: {fileID: 21300000, guid: d85a60d41f1c64e44b0dce448173f500, type: 3}
+  black_king: {fileID: 21300000, guid: 1acf6a7652abd1548ba589af26c4b4d4, type: 3}
+  black_rock: {fileID: 21300000, guid: 8669fb57ddcd9014b867bd3d75c96949, type: 3}
+  black_pawn: {fileID: 21300000, guid: 26229deb4cec17a4abc6068f87c88834, type: 3}
+  white_queen: {fileID: 21300000, guid: 613c93f99e237d54c934cfddaaff3bd6, type: 3}
+  white_knight: {fileID: 21300000, guid: 07b62850300e2eb429b7e49c6f5fe082, type: 3}
+  white_bishop: {fileID: 21300000, guid: 01e30194dfa8fca41b1a75bb673b2b7f, type: 3}
+  white_king: {fileID: 21300000, guid: fde7a30ae753ad848b7fdbdc11ff726d, type: 3}
+  white_rock: {fileID: 21300000, guid: f45c6a1c67946cc47931c0de2667eae4, type: 3}
+  white_pawn: {fileID: 21300000, guid: 2c7988bbefbc53d4bb202af0c444f5b5, type: 3}
+--- !u!61 &-1750071788975134510
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935789770131646785}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.2, y: 0.2}
+    newSize: {x: 0.13, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2}
+  m_EdgeRadius: 0

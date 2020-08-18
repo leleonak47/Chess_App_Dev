@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 341513352}
   m_Layer: 0
   m_Name: Controller
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,60 +332,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5935789769965423231
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646783, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935789770131646785, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}
-      propertyPath: m_Name
-      value: Chesspiece
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 75b2f6f1beeb9c14a8860ff9e36e68fe, type: 3}

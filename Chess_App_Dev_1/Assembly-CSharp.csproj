@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\Chessman.cs" />
+    <Compile Include="Assets\Scripts\MovePlate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
