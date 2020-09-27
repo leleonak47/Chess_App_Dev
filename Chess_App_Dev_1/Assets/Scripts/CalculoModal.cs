@@ -61,8 +61,9 @@ public class CalculoModal : MonoBehaviour
         else if (sinal == 3) simbol = "*";  // multiplicação
         else if (sinal == 4) simbol = "/";  // divisão
 
-        if ((sinal == 3) || (sinal == 4)) { number2 = Random.Range(1, 100); number1 = Random.Range(1, 100); }
-        else { number2 = Random.Range(1, 1000); number1 = Random.Range(1, 1000); };
+        if ((sinal == 3) || (sinal == 4))   { number1 = Random.Range(1, 100); number2 = Random.Range(1, (number1+1)); }
+        else if (sinal == 2)                { number1 = Random.Range(1, 1000); number2 = Random.Range(1, number1); }
+        else                                { number2 = Random.Range(1, 1000); number1 = Random.Range(1, 1000); };
 
         UpdateTitle("Resolva a conta abaixo!");
         Number1.text = number1.ToString();
