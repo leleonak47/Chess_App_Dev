@@ -38,6 +38,15 @@ public class MovePlate : MonoBehaviour
             Destroy(cp);
         }
 
+        //Adicionar o movimento em questão ao histórico
+        controller.GetComponent<Game>().moveHistory.Add(
+            new MovementData(reference.gameObject.name,
+            reference.GetComponent<Chessman>().GetXBoard(),
+            reference.GetComponent<Chessman>().GetYBoard(),
+            matrixX,
+            matrixY)
+            );
+
         controller.GetComponent<Game>().SetPositionEmpty
             (
             reference.GetComponent<Chessman>().GetXBoard(),
@@ -54,6 +63,7 @@ public class MovePlate : MonoBehaviour
 
         reference.GetComponent<Chessman>().DestroyMovePlates();
     }
+
 
     public void setCoords(int x, int y)
     {

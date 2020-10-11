@@ -31,8 +31,6 @@ public class CalculoModal : MonoBehaviour
         {
             UpdateTitle("Errou!");
         }
-
-
     }
 
     public bool ValidaCalculo(int valor1, int valor2, int resultado, string sinal)

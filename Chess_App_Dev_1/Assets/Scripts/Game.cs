@@ -13,6 +13,9 @@ public class Game : MonoBehaviour
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
 
+    [HideInInspector]
+    public List<MovementData> moveHistory;
+
     private string currentPlayer = "white";
 
     private bool gameOver = false;
