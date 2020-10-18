@@ -5,12 +5,14 @@ using UnityEngine;
 public class MovementData : MonoBehaviour
 {
     public string ChessmanName;
+    public GameObject ChessPiece;
     public int LastX, LastY;
     public int NewX, NewY;
 
-    public MovementData(string chessmanName, int lastX, int lastY, int newX, int newY)
+    public MovementData(string chessmanName, GameObject chessPiece, int lastX, int lastY, int newX, int newY)
     {
         ChessmanName = chessmanName;
+        ChessPiece = chessPiece;
         LastX = lastX;
         LastY = lastY;
         NewX = newX;

@@ -63,14 +63,14 @@ public class MovePlate : MonoBehaviour
 
             //Aqui eu preciso verificar a resposta da modal e aumentar o dano
 
-            if (army == "white")
-            {
-                controller.GetComponent<Game>().WhitePoints -= amountOfDamage;
-            }
-            else // Se não for o branco, só pode ser o preto
-            {
-                controller.GetComponent<Game>().BlackPoints -= amountOfDamage;
-            }
+            //if (army == "white")
+            //{
+            //    controller.GetComponent<Game>().WhitePoints -= amountOfDamage;
+            //}
+            //else // Se não for o branco, só pode ser o preto
+            //{
+            //    controller.GetComponent<Game>().BlackPoints -= amountOfDamage;
+            //}
 
             Destroy(cp);
         }
@@ -78,6 +78,7 @@ public class MovePlate : MonoBehaviour
         //Adicionar o movimento em questão ao histórico
         controller.GetComponent<Game>().moveHistory.Add(
             new MovementData(reference.gameObject.name,
+            reference.gameObject,
             reference.GetComponent<Chessman>().GetXBoard(),
             reference.GetComponent<Chessman>().GetYBoard(),
             matrixX,
