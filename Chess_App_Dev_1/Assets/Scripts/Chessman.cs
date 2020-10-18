@@ -10,6 +10,19 @@ public class Chessman : MonoBehaviour
     public GameObject controller;
     public GameObject movePlate;
 
+    private bool _alreadyMove = false;
+    public bool alreadyMove
+    {
+        get
+        {
+            return _alreadyMove;
+        }
+        set
+        {
+            _alreadyMove = value;
+        }
+    }
+
     // positions
     private int xBoard = -1;
     private int yBoard = -1;
@@ -102,6 +115,7 @@ public class Chessman : MonoBehaviour
 
     public void InitiateMovePlates()
     {
+        GameObject game = controller.GetComponent<GameObject>();
         switch (this.name)
         {
             case "black_queen":
@@ -144,10 +158,12 @@ public class Chessman : MonoBehaviour
 
             case "black_pawn":
                 PawnMovePlate(xBoard, yBoard - 1);
+                if (!alreadyMove) PawnMovePlate(xBoard, yBoard - 2);
                 break;
 
             case "white_pawn":
                 PawnMovePlate(xBoard, yBoard + 1);
+                if (!alreadyMove) PawnMovePlate(xBoard, yBoard + 2);
                 break;
         }
     }
