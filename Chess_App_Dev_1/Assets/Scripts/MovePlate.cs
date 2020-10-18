@@ -39,6 +39,7 @@ public class MovePlate : MonoBehaviour
         }
 
         //Adicionar o movimento em questão ao histórico
+
         controller.GetComponent<Game>().moveHistory.Add(
             new MovementData(reference.gameObject.name,
             reference.GetComponent<Chessman>().GetXBoard(),
