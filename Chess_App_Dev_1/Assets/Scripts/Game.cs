@@ -7,11 +7,44 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     public GameObject chesspiece;
+    public GameObject CalculoModal;
 
     //positions and team for each chesspiece
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
+
+    //pontuacao inicial 450
+    private int _blackPoints = 450;
+    private int _whitePoints = 450;
+    public int BlackPoints 
+    {
+        get 
+        { 
+            return _blackPoints; 
+        }
+        set 
+        { 
+            _blackPoints = value; 
+            blackPointsUI.text = _blackPoints.ToString(); 
+        }
+    }
+    
+    public int WhitePoints 
+    {
+        get
+        {
+            return _whitePoints;
+        }
+        set
+        {
+            _whitePoints = value;
+            whitePointsUI.text = _whitePoints.ToString();
+        }
+    }
+
+    public Text blackPointsUI;
+    public Text whitePointsUI;
 
     [HideInInspector]
     public List<MovementData> moveHistory;
@@ -19,6 +52,26 @@ public class Game : MonoBehaviour
     private string currentPlayer = "white";
 
     private bool gameOver = false;
+
+    void Awake()
+    {
+        if (CalculoModal == null)
+        {
+            if (GameObject.Find("CalculoPanel"))
+            {
+                CalculoModal = GameObject.Find("CalculoPanel");
+                CalculoModal.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("O painel de calculo não exibe");
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +102,6 @@ public class Game : MonoBehaviour
             SetPosition(playerBlack[i]);
             SetPosition(playerWhite[i]);
         }
-
     }
 
     public GameObject Create(string name, int x, int y)
@@ -126,5 +178,10 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = "As " + playerWinner + " venceram";
 
         GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
+    }
+
+    public void ControlCalculateModal(bool isActive)
+    {
+        CalculoModal.SetActive(isActive);
     }
 }
