@@ -102,13 +102,13 @@ MonoBehaviour:
   black_knight: {fileID: 21300000, guid: e6ba037fa723de54db80c36dba1ce7c0, type: 3}
   black_bishop: {fileID: 21300000, guid: d85a60d41f1c64e44b0dce448173f500, type: 3}
   black_king: {fileID: 21300000, guid: 1acf6a7652abd1548ba589af26c4b4d4, type: 3}
-  black_rock: {fileID: 21300000, guid: 8669fb57ddcd9014b867bd3d75c96949, type: 3}
+  black_rook: {fileID: 21300000, guid: 8669fb57ddcd9014b867bd3d75c96949, type: 3}
   black_pawn: {fileID: 21300000, guid: 26229deb4cec17a4abc6068f87c88834, type: 3}
   white_queen: {fileID: 21300000, guid: 613c93f99e237d54c934cfddaaff3bd6, type: 3}
   white_knight: {fileID: 21300000, guid: 07b62850300e2eb429b7e49c6f5fe082, type: 3}
   white_bishop: {fileID: 21300000, guid: 01e30194dfa8fca41b1a75bb673b2b7f, type: 3}
   white_king: {fileID: 21300000, guid: fde7a30ae753ad848b7fdbdc11ff726d, type: 3}
-  white_rock: {fileID: 21300000, guid: f45c6a1c67946cc47931c0de2667eae4, type: 3}
+  white_rook: {fileID: 21300000, guid: f45c6a1c67946cc47931c0de2667eae4, type: 3}
   white_pawn: {fileID: 21300000, guid: 2c7988bbefbc53d4bb202af0c444f5b5, type: 3}
 --- !u!61 &-1750071788975134510
 BoxCollider2D:

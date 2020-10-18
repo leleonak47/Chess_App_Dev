@@ -7,6 +7,13 @@ using UnityEngine.UI;
 /// Data: 19/09/2020
 /// </summary>
 
+public enum Operador
+{
+    Soma = 1,
+    Subtracao = 2,
+    multiplicacao = 3,
+    divisao = 4
+}
 public class CalculoModal : MonoBehaviour
 {
     private int number1;
@@ -19,6 +26,10 @@ public class CalculoModal : MonoBehaviour
     public Text Number2;
     public InputField resposta;
 
+    public int AmountOfDamage;
+    public float DamageMultiplier;
+    public GameObject chessPiece;
+
     public void submit()
     {
         //gameObject.GetComponent<InputField>().interactable = false;
@@ -26,11 +37,21 @@ public class CalculoModal : MonoBehaviour
         if (ValidaCalculo(number1, number2, int.Parse(resposta.text), simbol))
         {
             UpdateTitle("Acertou!");
+            ApplyDamage(DamageMultiplier);
         }
         else
         {
+            ApplyDamage(0.5f);
             UpdateTitle("Errou!");
         }
+
+        SetupModal();
+    }
+
+    public void OnClosePressed()
+    {
+        ApplyDamage(1);
+        SetupModal();
     }
 
     public bool ValidaCalculo(int valor1, int valor2, int resultado, string sinal)
@@ -52,21 +73,7 @@ public class CalculoModal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int sinal = Random.Range(1, 5);
-
-        if (sinal == 1) simbol = "+";       // soma
-        else if (sinal == 2) simbol = "-";  // subtração
-        else if (sinal == 3) simbol = "*";  // multiplicação
-        else if (sinal == 4) simbol = "/";  // divisão
-
-        if ((sinal == 3) || (sinal == 4))   { number1 = Random.Range(1, 100); number2 = Random.Range(1, (number1+1)); }
-        else if (sinal == 2)                { number1 = Random.Range(1, 1000); number2 = Random.Range(1, number1); }
-        else                                { number2 = Random.Range(1, 1000); number1 = Random.Range(1, 1000); };
-
-        UpdateTitle("Resolva a conta abaixo!");
-        Number1.text = number1.ToString();
-        Simbol.text = simbol;
-        Number2.text = number2.ToString();
+        SetupModal();
     }
 
     // Update is called once per frame
@@ -78,5 +85,78 @@ public class CalculoModal : MonoBehaviour
     void UpdateTitle(string message)
     {
         title.text = message;
+    }
+
+    void ApplyDamage(float damageMultiplier = 1)
+    {
+        string army = chessPiece.name.Substring(0, 5);
+        string piece = chessPiece.name.Substring(6, chessPiece.name.Length - 6);
+
+        print($"piece: {piece}| Army: {army}");
+
+        switch (piece)
+        {
+            /*Matar o Rei = HitKill - isso nunca acontece pq antes de comer o rei, 
+            vc bota ele em check mate e automaticamente ganha o jogo*/
+            case "king":
+                AmountOfDamage = 1000;
+                if (army == "white") GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().Winner("pretas");
+                else if (army == "black") GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().Winner("brancas");
+                break;
+
+            case "queen": AmountOfDamage = 100; break;
+            case "rook": AmountOfDamage = 50; break;
+            case "bishop": AmountOfDamage = 30; break;
+            case "knight": AmountOfDamage = 30; break;
+            case "pawn": AmountOfDamage = 10; break;
+        }
+
+        if (army == "white")
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().WhitePoints -= (int)(AmountOfDamage * damageMultiplier);
+        }
+        else // Se não for o branco, só pode ser o preto
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().BlackPoints -= (int)(AmountOfDamage * damageMultiplier);
+        }
+
+        Destroy(chessPiece);
+    }
+
+    void SetupModal()
+    {
+        Operador sinal = (Operador)Random.Range(1, 5); 
+        //int sinal = Random.Range(1, 5);
+
+        if (sinal == Operador.Soma) simbol = "+";
+        else if (sinal == Operador.Subtracao) simbol = "-";
+        else if (sinal == Operador.multiplicacao) simbol = "*";
+        else if (sinal == Operador.divisao) simbol = "/";
+
+        if (sinal == Operador.divisao)
+        { 
+            number1 = Random.Range(1, 50) * 2;
+            number2 = Random.Range(1, number1 < 10 ? (number1 + 1) : 10);
+        }
+        else if(sinal == Operador.multiplicacao)
+        {
+            number1 = Random.Range(1, 100);
+            number2 = Random.Range(1, number1);
+        }
+        else if (sinal == Operador.Subtracao)
+        {
+            number1 = Random.Range(1, 1000);
+            number2 = Random.Range(1, number1);
+        }
+        else
+        {
+            number2 = Random.Range(1, 1000);
+            number1 = Random.Range(1, 1000);
+        };
+
+        UpdateTitle("Resolva a conta abaixo!");
+        Number1.text = number1.ToString();
+        Simbol.text = simbol;
+        Number2.text = number2.ToString();
     }
 }

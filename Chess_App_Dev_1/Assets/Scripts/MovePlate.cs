@@ -15,6 +15,8 @@ public class MovePlate : MonoBehaviour
     // false: moviment, true: attacking
     public bool attack = false;
 
+    public int AmountOfDamage;
+
     public void Start()
     {
         if (attack)
@@ -33,46 +35,10 @@ public class MovePlate : MonoBehaviour
             //cp é quem esta sendo atacado
             GameObject cp = controller.GetComponent<Game>().GetPosition(matrixX, matrixY);
 
-            print(cp.name.Length);
-
-            string army = cp.name.Substring(0, 5);
-            string piece = cp.name.Substring(6, cp.name.Length - 6);
-
-            print($"piece: {piece}| Army: {army}");
-
-            int amountOfDamage = 0;
-
-            switch (piece)
-            {
-                /*Matar o Rei = HitKill - isso nunca acontece pq antes de comer o rei, 
-                vc bota ele em check mate e automaticamente ganha o jogo*/
-                case "king": 
-                    amountOfDamage = 1000;
-                    if (army == "white") controller.GetComponent<Game>().Winner("pretas");
-                    else if (army == "black") controller.GetComponent<Game>().Winner("brancas");
-                break; 
-                
-                case "queen": amountOfDamage = 100; break;
-                case "rock": amountOfDamage = 50; break;
-                case "bishop": amountOfDamage = 30; break;
-                case "knight": amountOfDamage = 30; break;
-                case "pawn": amountOfDamage = 10; break;
-            }
+            //Enviando para a modal o nome da peça destruida, para fazer o calculo de dano
+            controller.GetComponent<Game>().CalculoModal.GetComponent<CalculoModal>().chessPiece = cp;
 
             controller.GetComponent<Game>().ControlCalculateModal(true);
-
-            //Aqui eu preciso verificar a resposta da modal e aumentar o dano
-
-            //if (army == "white")
-            //{
-            //    controller.GetComponent<Game>().WhitePoints -= amountOfDamage;
-            //}
-            //else // Se não for o branco, só pode ser o preto
-            //{
-            //    controller.GetComponent<Game>().BlackPoints -= amountOfDamage;
-            //}
-
-            Destroy(cp);
         }
 
         //Adicionar o movimento em questão ao histórico
