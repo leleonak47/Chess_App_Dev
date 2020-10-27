@@ -159,13 +159,13 @@ public class Chessman : MonoBehaviour
                 break;
 
             case "black_pawn":
-                PawnMovePlate(xBoard, yBoard - 1);
-                if (!alreadyMove) PawnMovePlate(xBoard, yBoard - 2);
+                PawnMovePlate(xBoard, yBoard - 1, true);
+                if (!alreadyMove) PawnMovePlate(xBoard, yBoard - 2, false);
                 break;
 
             case "white_pawn":
-                PawnMovePlate(xBoard, yBoard + 1);
-                if (!alreadyMove) PawnMovePlate(xBoard, yBoard + 2);
+                PawnMovePlate(xBoard, yBoard + 1, true);
+                if (!alreadyMove) PawnMovePlate(xBoard, yBoard + 2, false);
                 break;
         }
     }
@@ -232,7 +232,7 @@ public class Chessman : MonoBehaviour
         }
     }
 
-    public void PawnMovePlate(int x, int y)
+    public void PawnMovePlate(int x, int y, bool canAtack)
     {
         Game sc = controller.GetComponent<Game>();
 
@@ -242,21 +242,23 @@ public class Chessman : MonoBehaviour
             {
                 MovePlateSpawn(x, y);
             }
-
-            if (
-                sc.PositionOnBoard(x + 1,y) && sc.GetPosition(x + 1, y) != null && 
-                sc.GetPosition(x + 1, y).GetComponent<Chessman>().player != player
-                )
+            if (canAtack)
             {
-                MovePlateAttackSpawn(x + 1, y);
-            }
+                if (
+                    sc.PositionOnBoard(x + 1, y) && sc.GetPosition(x + 1, y) != null &&
+                    sc.GetPosition(x + 1, y).GetComponent<Chessman>().player != player
+                    )
+                {
+                    MovePlateAttackSpawn(x + 1, y);
+                }
 
-            if (
-                sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
-                sc.GetPosition(x - 1, y).GetComponent<Chessman>().player != player
-                )
-            {
-                MovePlateAttackSpawn(x - 1, y);
+                if (
+                    sc.PositionOnBoard(x - 1, y) && sc.GetPosition(x - 1, y) != null &&
+                    sc.GetPosition(x - 1, y).GetComponent<Chessman>().player != player
+                    )
+                {
+                    MovePlateAttackSpawn(x - 1, y);
+                }
             }
         }
     }
