@@ -4,13 +4,13 @@
 #
 Chess_App_Dev_1/.vs
 Chess_App_Dev_1/[Ll]ibrary/
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+Chess_App_Dev_1/[Tt]emp/
+Chess_App_Dev_1/[Oo]bj/
+Chess_App_Dev_1/[Bb]uild/
+Chess_App_Dev_1/[Bb]uilds/
+Chess_App_Dev_1/[Ll]ogs/
+Chess_App_Dev_1/[Mm]emoryCaptures/
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

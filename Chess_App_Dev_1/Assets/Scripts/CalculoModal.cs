@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
@@ -27,25 +28,12 @@ public class CalculoModal : MonoBehaviour
     public InputField resposta;
 
     public int AmountOfDamage;
-    public float DamageMultiplier;
+    public PointRules DmgRule;
     public GameObject chessPiece;
 
     public void submit()
     {
-        //gameObject.GetComponent<InputField>().interactable = false;
-
-        if (ValidaCalculo(number1, number2, int.Parse(resposta.text), simbol))
-        {
-            UpdateTitle("Acertou!");
-            ApplyDamage(DamageMultiplier);
-        }
-        else
-        {
-            ApplyDamage(0.5f);
-            UpdateTitle("Errou!");
-        }
-
-        SetupModal();
+        StartCoroutine(Submit(1));
     }
 
     public void OnClosePressed()
@@ -99,16 +87,16 @@ public class CalculoModal : MonoBehaviour
             /*Matar o Rei = HitKill - isso nunca acontece pq antes de comer o rei, 
             vc bota ele em check mate e automaticamente ganha o jogo*/
             case "king":
-                AmountOfDamage = 1000;
+                AmountOfDamage = DmgRule.KingDamage;
                 if (army == "white") GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().Winner("pretas");
                 else if (army == "black") GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().Winner("brancas");
                 break;
 
-            case "queen": AmountOfDamage = 100; break;
-            case "rook": AmountOfDamage = 50; break;
-            case "bishop": AmountOfDamage = 30; break;
-            case "knight": AmountOfDamage = 30; break;
-            case "pawn": AmountOfDamage = 10; break;
+            case "queen": AmountOfDamage = DmgRule.KingDamage; break;
+            case "rook": AmountOfDamage = DmgRule.RookDamage; break;
+            case "bishop": AmountOfDamage = DmgRule.BishopDamage; break;
+            case "knight": AmountOfDamage = DmgRule.KnightDamage; break;
+            case "pawn": AmountOfDamage = DmgRule.PawnDamage; break;
         }
 
         if (army == "white")
@@ -158,5 +146,34 @@ public class CalculoModal : MonoBehaviour
         Number1.text = number1.ToString();
         Simbol.text = simbol;
         Number2.text = number2.ToString();
+        resposta.text = "";
+    }
+
+    IEnumerator Submit(float seconds)
+    {
+        //gameObject.GetComponent<InputField>().interactable = false;
+
+        if (resposta.text == string.Empty)
+        {
+            UpdateTitle("Por favor, informe um valor ou clique no X");
+            yield return null;
+        }
+
+        if (ValidaCalculo(number1, number2, int.Parse(resposta.text), simbol))
+        {
+            UpdateTitle("Acertou!");
+            ApplyDamage(DmgRule.HitDamageMultiplier);
+        }
+        else
+        {
+            UpdateTitle("Errou!");
+            ApplyDamage(DmgRule.MissDamageMultiplier);
+        }
+
+        yield return new WaitForSeconds(seconds);
+
+        gameObject.SetActive(false);
+
+        SetupModal();
     }
 }

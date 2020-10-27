@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  pointRule: {fileID: 11400000, guid: 31d8c966a7d75a5428e7616126dc622d, type: 2}
   attack: 0
+  AmountOfDamage: 0
 --- !u!61 &8872503673173796694
 BoxCollider2D:
   m_ObjectHideFlags: 0

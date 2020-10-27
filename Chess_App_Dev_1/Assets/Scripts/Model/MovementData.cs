@@ -18,6 +18,6 @@ public class MovementData : MonoBehaviour
         NewX = newX;
         NewY = newY;
 
-        print($"Novo movimento registrado : {chessmanName} - LX:{lastX} LY:{lastY} NX:{newX} NY:{newY}");
+        //print($"Novo movimento registrado : {chessmanName} - LX:{lastX} LY:{lastY} NX:{newX} NY:{newY}");
     }
 }
