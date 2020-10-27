@@ -92,7 +92,7 @@ public class CalculoModal : MonoBehaviour
                 else if (army == "black") GameObject.FindGameObjectWithTag("GameController").GetComponent<Game>().Winner("brancas");
                 break;
 
-            case "queen": AmountOfDamage = DmgRule.KingDamage; break;
+            case "queen": AmountOfDamage = DmgRule.QueenDamage; break;
             case "rook": AmountOfDamage = DmgRule.RookDamage; break;
             case "bishop": AmountOfDamage = DmgRule.BishopDamage; break;
             case "knight": AmountOfDamage = DmgRule.KnightDamage; break;
