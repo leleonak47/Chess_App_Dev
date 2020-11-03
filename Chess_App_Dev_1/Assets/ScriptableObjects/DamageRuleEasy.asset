@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cd10a60228d2543849a336c66bd42d, type: 3}
   m_Name: DamageRuleEasy
   m_EditorClassIdentifier: 
-  KingDamage: 1000
+  KingDamage: 2000
   QueenDamage: 100
   RookDamage: 50
   BishopDamage: 30
